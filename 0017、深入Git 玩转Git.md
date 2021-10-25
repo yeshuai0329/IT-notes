@@ -232,9 +232,20 @@ $ git stash list // 可以查看 stash 栈内的改动
 #### 1.5.10、禁止向远端继承分支执行 push -f
 
 ```bash
-$ git push -f  //禁止向远端继承分支执行 push -f, 此命令一执行，远端代码commit记录便会消失
+$ git push -f  //禁止向远端继承分支执行 push -f, 此命令一执行，远端代码所有commit记录便会消失
 ```
 
+### 1.5.11、深聊git push
+-  `git push` 默认情况下向远程推送本地所有新添加的 `commit` 记录到远端主机
+- `git push` 的完整语法
+```javascript
+$ git push -f <remotename> <commit SHA>:<remotebranchname>
+```
+- `<remotename>` 远程仓库名，默认为origin,是在使用`git remote add <remotename> <remoteaddress>`连接本地和远程仓库的时候起的名字,自己定义的默认是origin
+- <commit SHA> 提交的唯一码: `commit` 后生成的哈希值
+- <remotebranchname> 远程分支名:要推送的分支名
+
+!!! 注意: `git push -f`, 会清除远端主机所有的commit记录,`git push -f origin ac34f232e: master`, 会使origin远端主机仓库的master分支commit记录回退到ac34f232e.  慎用,禁止使用.
 #### 1.5.11、配置ssh
 
 1. `cd ~/.ssh` 检查是否电脑又ssh
