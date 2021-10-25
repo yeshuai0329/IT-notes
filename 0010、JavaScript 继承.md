@@ -1,0 +1,163 @@
+## (1)原型继承
+
+- 原型继承 => 就是通过改变原型链的方式来达到继承
+  - `子类.prototype = 父类的实例`
+
+```javascript
+1.父类
+function Person(name) {
+  this.name = name
+}
+Person.prototype.sayHi = function (){
+  console.log('hello world !')
+}
+2.子类
+function Student(age) {
+  this.age = age
+}
+
+3.实现Student 继承 Person
+Student.prototype = new Person('jack')
+var s1 = new Student(18)
+
+//原理:
+实例的__proto__ = 父类的prototype
+实例对象点什么属性或方法,这个属性或者方法,要么是保存在父类函数体内,要么是在父类的prototype原型上
+s1.__proto__ = Student.prototype
+new Person()的时候,会出来实例对象,包含name属性和prototype上的sayHi方法
+s1的实例能访问Student.prototype上的方法,又因为Student.prototype = new Person()
+所以s1的原型上具有name和sayHi方法
+```
+
+- 缺点:
+  1. 继承下来的属性没有继承在自己身上,而是在`__proto__`上
+  2. 继承的目的主要是继承属性和方法,原型继承的参数要在多个位置传递
+  3. 对于代码的书写和维护和阅读都不是很好,而且十分消耗性能
+
+------
+
+## (2)借用继承
+
+> 借用构造函数继承(借用继承/call继承)
+
+**this 指向:**
+
+- this 是一个使用在作用域的 关键字
+
+  - 要么使用在全局
+  - 要么使用在函数内部
+
+- 当使用在全局的时候
+
+  - this 指向window
+
+- 当使用在函数内部的时候
+
+  - 不管函数的定义方式,不管函数定义在哪里
+  - 只看函数的调用方式(箭头函数除外)
+  - 全局调用
+    - 函数名(): this ---> window
+  - 对象调用
+    - 对象名.函数名() : this--->点前面是谁就是谁
+  - 定时器处理函数
+    - `setTimeout(function() {},1000)`:this指向window
+    - `setInterval(function() {},1000)`:this指向window
+  - 事件处理函数:
+    - `xxx.onclick= function() {}`
+    - `xxx.addEventListner('click',function(){})`
+    - 以上两种函数里面 ,this指向事件源
+  - 自调用函数
+    - this指向window
+  - 构造函数
+    - this指向当前实例对象
+  - 箭头函数
+    - 箭头函数没有this
+    - this指向上下文中父级的this
+
+  **call:**
+
+  - 强行改变this指向的方法
+  - `call(this指向,参数,参数)`
+
+  ```javascript
+  1.父类
+  function Person(name) {
+    this.name = name
+  }
+  Person.prototype.sayHi = function (){
+    console.log('hello world !')
+  }
+  2.子类
+  function Student(age,name) {
+    this.age = age
+    Person.call(this,name)
+  }
+  
+  3.实现Student 继承 Person
+  var s1 = new Student(18,'jack')
+  
+  //原理:
+  ```
+
+  **借用继承的优缺点:**
+
+  **优点:**
+
+  1. 继承来的属性写在了自己身上,不需要去`__proto__`上找了
+  2. 自己需要用到的两个属性值 ,在一个构造函数的时候传递
+
+  **缺点:**
+
+  1. 只能继承父类的属性
+  2. 不能继承父类的原型上的方法
+  3. 写在构造函数体内的都可以继承
+
+------
+
+## (3)组合继承:
+
+组合继承:
+
+- 继承: 子类的实例使用父类的属性和方法
+- 组合: 原型继承 + 借用继承
+  - 利用借用构造函数继承,把属性继承在自己身上
+  - 利用原型继承把父类 prototype上的属性和方法继承下来
+
+**缺点:**
+
+1. 原来子类原型上的方法就没有了
+
+------
+
+## (4)es6语法继承
+
+**es6 的继承语法:**
+
+1. es6书写的类的语法叫 class
+2. es6也有自己的继承关键字 extends
+3. 书写子类的时候:
+   1. `class 子类 extends 父类 {}`
+   2. 在子类constructor里写super()
+
+```javascript
+1.父类
+class Person {
+  constructor(name) {
+		this.name = name
+  }
+  //原型上的方法
+  sayHi () {
+    console.log('你好')
+  }
+}
+
+2.子类
+class Student extends Person {
+  constructor(name){
+    //super 必须写在自己的this前面
+    super(name)
+    this.age=age
+  }
+}
+var s1 = new Student(18,jack)
+```
