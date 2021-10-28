@@ -108,13 +108,15 @@ $ git log -n4 --oneline // 简介的展示最近四条commit数据
 
 ```bash
 $ git barnch // 查看本地存在的分支
-$ git barnch -v // 查看本地存在的分支
-$ git barnch -r // 查看远端所有的存在的分支
-$ git barnch -av // 查看本地和远端所有的存在的分支
+$ git barnch -a // 查看本地和远端所有的存在的分支
+$ git barnch -r // 看远端所有的存在的分支
+$ git barnch -av // 查看本地和远端所有的存在的分支,带commit记录
+$ git barnch -rv // 查看本地和远端所有的存在的分支,带commit记录
 $ git checkout fix/delname  // 创建一个fix/delname分支
 $ git branch fix/delname  // 切换到fix/delname分支
 $ git checkout -d fix/delname // 创建一个fix/delname分支，并且切换到fix/delname分支
 $ git branch -D fix/delname  // 删除fix/delname分支
+$ git branch -m fix/delname  fix/editname // 修改fix/delname分支,为fix/editname,远程也会被修改
 ```
 
 #### 1.4.8、克隆仓库
@@ -246,7 +248,12 @@ $ git push -f <remotename> <commit SHA>:<remotebranchname>
 - <remotebranchname> 远程分支名:要推送的分支名
 
 !!! 注意: `git push -f`, 会清除远端主机所有的commit记录,`git push -f origin ac34f232e: master`, 会使origin远端主机仓库的master分支commit记录回退到ac34f232e.  慎用,禁止使用.
-#### 1.5.11、配置ssh
+#### 1.5.12、分支合并
+-  github gitlab 遵循fastfoward原则
+-  git merge 合并,是将一个分支合并到当前分支,解决冲突以后会生成一个新的commit记录
+-  git rebase 是变基操作,可以达到合并分支效果,是将一个分支合并到当前分支,解决冲突以后会生成一个新的commit记录
+
+#### 1.5.12、配置ssh
 
 1. `cd ~/.ssh` 检查是否电脑又ssh
 2. `ssh-keygen -t rsa -C 'github邮箱地址'`
