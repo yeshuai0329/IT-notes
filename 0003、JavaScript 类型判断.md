@@ -42,11 +42,11 @@ function _instanceof(A,B) {
   // 获得对象的原型
   let aPrototype = A.__proto__
   while (true) {
-    	if (A === null)
+    	if (aPrototype === null)
     		return false
-    	if (B === A)
+    	if (bPrototype === aPrototype)
     		return true
-    	A = A.__proto__
+    	aPrototype = aPrototype.__proto__
   }
 }
 ```
