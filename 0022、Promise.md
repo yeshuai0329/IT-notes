@@ -21,7 +21,7 @@
 
    打印
 
-   ![image-20220811091446800](C:\Users\YE\Desktop\front-notes\assets\image-20220811091446800.png)
+   ![image-20220811091446800](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811091446800.png)
 
 2. `fulfilled`    成功
 
@@ -31,7 +31,7 @@
 
    打印
 
-   ![image-20220811091600792](C:\Users\YE\Desktop\front-notes\assets\image-20220811091600792.png)
+   ![image-20220811091600792](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811091600792.png)
 
 3. `rejected`    失败
 
@@ -41,7 +41,7 @@
 
    打印
 
-   ![image-20220811091855984](C:\Users\YE\Desktop\front-notes\assets\image-20220811091855984.png)
+   ![image-20220811091855984](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811091855984.png)
 
 ## 4. Promise 的微任务执行机制
 
@@ -71,7 +71,7 @@ console.log('a')
 
 执行结果
 
-![image-20220811093340687](C:\Users\YE\Desktop\front-notes\assets\image-20220811093340687.png)
+![image-20220811093340687](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811093340687.png)
 
 ## 5. 微任务与宏任务执行机制
 
@@ -102,7 +102,7 @@ new Promise((resovle, reject) => {
 console.log('a')
 ```
 
-![image-20220811094304709](C:\Users\YE\Desktop\front-notes\assets\image-20220811094304709.png)
+![image-20220811094304709](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811094304709.png)
 
 案例2：
 
@@ -131,7 +131,7 @@ console.log('a')
 
 打印
 
-![image-20220811094457577](C:\Users\YE\Desktop\front-notes\assets\image-20220811094457577.png)
+![image-20220811094457577](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811094457577.png)
 
 案例3：
 
@@ -160,7 +160,7 @@ console.log('a')
 
 打印
 
-![image-20220811094703575](C:\Users\YE\Desktop\front-notes\assets\image-20220811094703575.png)
+![image-20220811094703575](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811094703575.png)
 
 案例4:
 
@@ -189,7 +189,7 @@ console.log('a')
 
 打印
 
-![image-20220811094840487](C:\Users\YE\Desktop\front-notes\assets\image-20220811094840487.png)
+![image-20220811094840487](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811094840487.png)
 
 ## 6.Promise的单一状态与状态中转
 
@@ -210,7 +210,7 @@ console.log('a')
 
 打印
 
-![image-20220811095307607](C:\Users\YE\Desktop\front-notes\assets\image-20220811095307607.png)
+![image-20220811095307607](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811095307607.png)
 
 ## 7.then()方法
 
@@ -253,4 +253,4 @@ setTimeout(() => {
 
 打印
 
-![image-20220811100740338](C:\Users\YE\Desktop\front-notes\assets\image-20220811100740338.png)
+![image-20220811100740338](https://front-notes.oss-cn-hangzhou.aliyuncs.com/img/image-20220811100740338.png)
