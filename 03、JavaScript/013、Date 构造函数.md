@@ -1,154 +1,47 @@
-#### 一、字符串的常用方法
+> Date构造函数，创建一个实例，保存的现在的时间对象。
 
-1. `indexOf(s1,[s2])`
+### 1. `new Date()`
 
-   - 返回字符串中检索指定字符第一次出现的位置，没找到就返回-1.
-   - s1 ： 要查找的字符串（必填）
-   - s2 ： 从哪个索引开始查找 （选填）
-
-   ```javascript
-   const str = 'abcabcddd'
-   str.indexOf('abc') // 0
-   str.indexOf('b') // 1
-   str.indexOf('ddd') // 6
-   str.indexOf('d') // 6
-   ```
-
-2. `search()`  查找
-
-   - 主要检索与正则表达式相匹配的值
-   - 一个参数，找到返回索引，没找到返回-1
-
-   ```javascript
-   const str = 'abcabcddd'
-   str.search('abc') // 0
-   ```
-
-3. `trim() ` 去除前后空格
-
-   ```javascript
-   var str = "  abcde fg h ";
-   console.log(str.length);//13
-   console.log(str.trim().length);//10
-   ```
-
-4. `charAt()`  根据下标返回字符
-
-   ```javascript
-   var str = "abcde";
-   console.log(str.charAt(0)) //a
-   ```
-
-5. `charCodeAt`  根据下标返回字符的ASCLL码
-
-   ```javascript
-   var str = "abcde";
-   console.log(str.charCodeAt(0)) //97
-   ```
-
-6. `fromCharCode()`  将 ASCll 转化为字符
-
-   ```javascript
-   console.log(String.fromCharCode(97)) //a
-   ```
-
-7. `substr(s1,s2)`  截取字符串
-
-   - 第一个参数是开始截取的索引，第二个参数要截取多少个
-   - 只有一个参数，代表从开始截取的位置到最后
-   - 返回值是截取的字符串
-
-   ```javascript
-   var str = "abcdef";
-   console.log(str.substr(0, 5));//abcde
-   console.log(str.substr(4));//ef--写一个参数为索引，默认截取字符串该索引后面的所有字符
-   console.log(str.substr(-3,2))//从倒数第三个,截取2个
-   ```
-
-8. `substring(start,end)` 截取字符串
-
-   * 作用:对字符串进行截取(包前不包后)
-   * 参数:start表示截取开始的索引,end表示截取结束的索引,end要大于start,不允许负数
-   * 返回:从start到end的字符串,不包含end
-
-   ```javascript
-   var str = "abcdef";
-   console.log(str.slice(0, 4));//abcd
-   console.log(str.slice(3));//def--等价于substring
-   ```
-
-9. `slice(start,end)`
-
-   * 作用：对字符串截取，start表示截取的开始元素，end表示截取的截止元素，包前不包后。
-
-   * 返回值：截取的字符串
-
-   * ```javascript
-     console.log(str.slice(0,4));//0是起始索引,4是结束索引,不包含4
-     console.log(str.slice(4));//表示从4到结束
-     console.log(str.slice(-3));//表示倒数第三到最后
-     ```
-
-10. `split(s1,s2)`  将字符串转化成数组
-
-    - 第一个参数是根据什么截取，可以是字符串，可以是正则
-
-    ```javascript
-    var s3 = "abcdefg";
-    console.log(s3.split('')) //转换为['a','b','c','d','e','f','g']
-    var s4 = "a,b,cd,e,fg";
-    console.log(s3.split(',')) //转换为['a', 'b', 'cd', 'e', 'fg']
-    ```
-
-11.`match()`  匹配符合正则的字符串
-
-- 参数是正则表达式
-- 返回值是null 或者符合正则的字符串数组
-
-```javascript
-var tel = 'dddaaadddcccdddd';
-console.log(tel.match(/ddd/)) //['ddd', 'ddd', 'ddd']
-```
-
-12. `replace()`  替换
-
-- `replace()`  方法是用替换值（replacement）替换部分子串，或者替换所有匹配的子串。返回值是替换以后的新字符串。
-
-  **语法：**
-
-```javascript
-str.replace(regexp|substr, newSubStr|function)
-// 第一个参数是： 字符串 或者 正则表达式
-// 第二个参数是： 替换的字符串 | 每次都会执行的回调函数
-```
-
-- 当第一个参数是字符串的时候，仅第一个匹配项会被替换。
+- 参数： 
 
   ```javascript
-  const str = 'abcde'
-  const newStr = str.replace('a','c')  
-  console.log(newStr) // 'cbcde'
+  new Date();
+  //如果没有提供参数，那么新创建的Date对象表示实例化时刻的日期和时间。
+  new Date(value);  
+  //一个 Unix 时间戳（Unix Time Stamp），它是一个整数值，表示自1970年1月1日00:00:00 UTC（the Unix epoch）以来的毫秒数，忽略了闰秒。请注意大多数 Unix 时间戳功能仅精确到最接近的秒
+  new Date(dateString); 
+  //表示日期的字符串值。该字符串应该能被 Date.parse() 正确方法识别
+  new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+  //当至少提供了年份与月份时，这一形式的 Date() 返回的 Date 对象中的每一个成员都来自下列参数。没有提供的成员将使用最小可能值（对日期为1，其他为0）。
+  //参数monthIndex 是从“0”开始计算的，这就意味着一月份为“0”，十二月份为“11”。
   ```
 
-- 当第二个参数是函数的时候，函数的返回值会作为替换的字符串。
+  ​	
 
+### 2. 实例可以调用的方法
 
+#### 2.1. `getDate()`
 
-#### 二、遍历字符串
-
-1. #### `for` 循环
-
-```javascript
-const str = '0123456'
-for(var i=0;i< str.length;i++){
-  console.log(str[i]);//0 1 2 3 4 5 6
-}
-```
-
-2. `for...in`
+- 根据当地时间，返回当月的那一天。
 
 ```javascript
-for ( const key in str) {
-   console.log(key);//0 1 2 3 4 5 6
-}
+const time = new Date() 
+console.log(time) // Sat Sep 10 2022 23:11:02 GMT+0800 (中国标准时间)
+const day = time.getDate()
+console.log(day)  // 10
 ```
+
+
+
+#### 2.2. `getDay()`
+
+- **`getDay()`** 方法根据本地时间，返回一个具体日期中一周的第几天，0 表示星期天。
+- 返回值： 根据本地时间，返回一个 0 到 6 之间的整数值，代表星期几： 0 代表星期日， 1 代表星期一，2 代表星期二， 依次类推。
+
+```javascript
+const time = new Date() 
+console.log(time) // Sat Sep 10 2022 23:11:02 GMT+0800 (中国标准时间)
+const day = time.getDay()
+console.log(day) // 6
+```
+
